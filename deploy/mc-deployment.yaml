@@ -1,0 +1,103 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minecraft-server
+  labels:
+    app: minecraft
+spec:
+  selector:
+    matchLabels:
+      app: minecraft
+      tier: server
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: minecraft
+        tier: server
+    spec:
+      initContainers:
+      - name: restore
+        image: itzg/mc-backup
+        volumeMounts:
+        - name: minecraft-data
+          mountPath: /data
+        - name: minecraft-backup
+          mountPath: /backups
+        command: 
+        - restore-tar-backup
+      containers:
+      - name: mc-backup
+        image: itzg/mc-backup
+        env:
+        - name: BACKUP_INTERVAL
+          value: "24h"  # Adjust backup interval as needed
+        # Add other environment variables for backup configuration
+        - name: BACKUP_NAME
+          value: backup
+        - name: PAUSE_IF_NO_PLAYER
+          value: "true"
+        - name: RCON_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: minecraft-secret
+              key: RCON_PASSWORD
+        volumeMounts:
+        - name: minecraft-data
+          mountPath: /data
+          readOnly: true
+        - name: minecraft-backup
+          mountPath: /backups
+        # Add other volume mounts as necessary
+      - name: minecraft-server
+        image: itzg/minecraft-server
+        env:
+        - name: EULA
+          value: "true"
+        - name: DIFFICULTY
+          value: "hard"
+        - name: RCON_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: minecraft-secret
+              key: RCON_PASSWORD
+        - name: TYPE
+          value: "SPIGOT"
+        - name: VERSION
+          value: "1.20.4"
+        - name: FORCE_REDOWNLOAD
+          value: "true"
+        - name: ENABLE_UPDATE
+          value: "true"
+        - name: MODPACK
+          valueFrom:
+            secretKeyRef:
+              name: minecraft-secret
+              key: MODPACK
+        - name: SPIGOT_DOWNLOAD_URL
+          value: ""
+        - name: BUILD_SPIGOT_FROM_SOURCE
+          value: "true"
+        - name: FORCE_WORLD_COPY
+          value: "false"
+        - name: WORLD
+          valueFrom:
+            secretKeyRef:
+              name: minecraft-secret
+              key: WORLD
+        ports:
+        - containerPort: 25565
+          name: minecraft
+        - containerPort: 25575
+          name: rcon
+        volumeMounts:
+        - name: minecraft-data
+          mountPath: /data
+      volumes:
+      - name: minecraft-data
+        persistentVolumeClaim:
+          claimName: minecraft-data
+      - name: minecraft-backup
+        persistentVolumeClaim:
+          claimName: minecraft-backup
