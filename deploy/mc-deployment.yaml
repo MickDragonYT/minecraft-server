@@ -17,6 +17,16 @@ spec:
         app: minecraft
         tier: server
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/arch
+                    operator: In
+                    values:
+                      - amd64
+
       initContainers:
       - name: restore
         image: itzg/mc-backup
@@ -86,6 +96,12 @@ spec:
             secretKeyRef:
               name: minecraft-secret
               key: WORLD
+        - name: MAX_PLAYERS
+          value: "50"
+        - name: ICON
+          value: "https://i.pinimg.com/564x/2f/de/33/2fde331891a8e8a4c97ca9ad79e583be.jpg"
+        - name: MOTD
+          value: "MICK'S MINECRAFT SMP [EU]"
         ports:
         - containerPort: 25565
           name: minecraft
