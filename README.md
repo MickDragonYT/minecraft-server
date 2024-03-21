@@ -97,19 +97,19 @@ kubectl cp minecraft-server-xxxx-xxxx:/data /home/user/backup
 After running the one line command you should see on your backup.file that it should contain everything that it's inside the root file.
 
 ##### Checking/Testing commands for k8s (beginner-friendly)
-`kubectl get pod`: Retrieves information about pods in the cluster.
-`kubectl apply -f (file)`: Applies the configuration from the specified file to create or update Kubernetes resources.
-`kubectl get pvc`: Retrieves information about Persistent Volume Claims (PVCs).
-`kubectl get pv`: Retrieves information about Persistent Volumes (PVs).
-`kubectl get svc`: Retrieves information about services.
-`kubectl get event`: Retrieves information about events in the cluster.
-`kubectl logs (pod-name)`: Displays the logs of a specific pod.
-`kubectl delete pod (name)`: Deletes a specific pod.
-`kubectl delete pvc (name):`
-`kubectl delete pv (name):`
-`kubectl exec -it (pod name) bash`: Executes a command interactively inside a pod, usually used to access a shell.
-`kubectl get pod (pod-name) -o yaml`: Retrieves detailed information about a specific pod in YAML format.
-`kubectl logs (pod-name) -c minecraft-server -f`
+- `kubectl get pod`: Retrieves information about pods in the cluster.
+- `kubectl apply -f (file)`: Applies the configuration from the specified file to create or update Kubernetes resources.
+- `kubectl get pvc`: Retrieves information about Persistent Volume Claims (PVCs).
+- `kubectl get pv`: Retrieves information about Persistent Volumes (PVs).
+- `kubectl get svc`: Retrieves information about services.
+- `kubectl get event`: Retrieves information about events in the cluster.
+- `kubectl logs (pod-name)`: Displays the logs of a specific pod.
+- `kubectl delete pod (name)`: Deletes a specific pod.
+- `kubectl delete pvc (name):`
+- `kubectl delete pv (name):`
+- `kubectl exec -it (pod name) bash`: Executes a command interactively inside a pod, usually used to access a shell.
+- `kubectl get pod (pod-name) -o yaml`: Retrieves detailed information about a specific pod in YAML format.
+- `kubectl logs (pod-name) -c minecraft-server -f`: Getting status and update in specfic file.
 
 #### metal-lb.sh
 * important to run this script if you wanna host the local IP and test connection to the server.
@@ -148,7 +148,6 @@ chmod +x 002-metal-lb.sh
 ./002-metal-lb.sh
 ```
 
-
 ##### Usetage of rcon and why you need it
 if you wanna host your minecraft-server terminal use rcon. make sure you install it and have it on your computer then you can later run it and host your minecraft-server.
 ```bash
@@ -169,4 +168,6 @@ Downloads/rcon-cli --host IP-ADDRESS --password
 
 [Minecraft server dockor help](https://docker-minecraft-server.readthedocs.io/en/latest/)
 
-![cat](https://www.alleycat.org/wp-content/uploads/2019/03/FELV-cat.jpg)
+
+##### have fun!!
+![cat](https://i.pinimg.com/564x/81/91/1b/81911b4dc9f94e4aec3e1c7c5bdb3729.jpg)
