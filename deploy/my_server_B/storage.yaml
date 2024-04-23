@@ -1,19 +1,31 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: minecraft-data-server-b
+  name: minecraft-data-server-a
 spec:
   resources:
     requests:
       storage: 2Gi
   accessModes: 
   - ReadWriteOnce
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: minecraft-mods-server-b
+spec:
+  storageClassName: nfs-client-retain
+  resources:
+    requests:
+      storage: 2Gi
+  accessModes:
+  - ReadWriteOnce
 
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: minecraft-backup-server-b
+  name: minecraft-backup-server-a
 spec:
   storageClassName: nfs-client-retain
   resources:
