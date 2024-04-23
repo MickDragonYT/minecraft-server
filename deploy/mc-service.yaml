@@ -4,6 +4,9 @@ metadata:
   name: minecraft-server # Name of the resource and also its hostname
   labels:
     app: minecraft
+  annotations:
+    tailscale.com/expose: "true"
+  
 spec:
   ports:
     - port: 25565 
