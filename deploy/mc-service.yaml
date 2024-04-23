@@ -15,4 +15,4 @@ spec:
   selector:
     app: minecraft
     tier: server
-  type: LoadBalancer
+  type: ClusterIP
