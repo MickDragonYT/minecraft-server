@@ -174,6 +174,7 @@ In certain parts of the script, you'll notice references to `secretKeyRef` and `
 - `git commit`
 - `git push`
 - `git log`
+- git commit -a (ctrl O, ctrl X "dont forget to enter"), git push
 
 #### Resources
 

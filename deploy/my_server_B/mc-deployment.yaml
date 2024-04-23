@@ -123,7 +123,7 @@ spec:
       volumes:
       - name: minecraft-data
         persistentVolumeClaim:
-          claimName: minecraft-data
+          claimName: minecraft-data-server-b
       - name: minecraft-backup
         persistentVolumeClaim:
-          claimName: minecraft-backup
+          claimName: minecraft-backup-server-b
