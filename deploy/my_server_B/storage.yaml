@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: minecraft-data-server-a
+  name: minecraft-data-server-b
 spec:
   resources:
     requests:
@@ -25,7 +25,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: minecraft-backup-server-a
+  name: minecraft-backup-server-b
 spec:
   storageClassName: nfs-client-retain
   resources:
