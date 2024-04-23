@@ -1,0 +1,43 @@
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: minecraft-gateway
+spec:
+  selector:
+    app: istio-gateway
+    istio: ingressgateway-default # use istio default controller
+  servers:
+  - port:
+      number: 25565
+      name: minecraft
+      protocol: TCP
+    hosts:
+      - "*"
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: minecraft
+spec:
+  gateways:
+  - minecraft-gateway
+  hosts:
+    - '*'
+  tcp:
+  - match:
+      - port: 25565
+    route:
+    - destination:
+        host: minecraft-server.minecraft.svc.cluster.local
+        subset: prodversion
+---
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: minecraft
+spec:
+  host: minecraft-server.minecraft.svc.cluster.local
+  subsets:
+  - name: prodversion
+    labels:
+      app: minecraft
