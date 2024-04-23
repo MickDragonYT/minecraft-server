@@ -88,11 +88,11 @@ spec:
             secretKeyRef:
               name: minecraft-secret
               key: FMODPACK
-        #- name: SPIGOT_DOWNLOAD_URL
-        #  value: ""
-        #- name: BUILD_SPIGOT_FROM_SOURCE
-        #  value: "true"
-        #- name: FORCE_WORLD_COPY
+        - name: SPIGOT_DOWNLOAD_URL
+          value: ""
+        - name: BUILD_SPIGOT_FROM_SOURCE
+          value: "true"
+        - name: FORCE_WORLD_COPY
           value: "true"
         - name: WORLD
           valueFrom:
