@@ -59,8 +59,7 @@ spec:
           readOnly: true
         - name: minecraft-backup
           mountPath: /backups
-        - name: minecraft-plugins
-          mountPath: /plugins
+
         # Add other volume mounts as necessary
       - name: minecraft-server
         image: itzg/minecraft-server
@@ -122,6 +121,8 @@ spec:
         volumeMounts:
         - name: minecraft-data
           mountPath: /data
+        - name: minecraft-plugins
+          mountPath: /plugins
       volumes:
       - name: minecraft-data
         persistentVolumeClaim:
