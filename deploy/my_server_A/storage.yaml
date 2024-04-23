@@ -8,6 +8,18 @@ spec:
       storage: 2Gi
   accessModes: 
   - ReadWriteOnce
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: minecraft-plugins-server-a
+spec:
+  storageClassName: nfs-client-retain
+  resources:
+    requests:
+      storage: 1Gi
+  accessModes:
+  - ReadWriteOnce
 
 ---
 apiVersion: v1
