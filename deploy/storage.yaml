@@ -8,14 +8,16 @@ spec:
       storage: 2Gi
   accessModes: 
   - ReadWriteOnce
+
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: minecraft-backup
 spec:
+  storageClassName: nfs-client
   resources:
     requests:
       storage: 20Gi
   accessModes: 
-  - ReadWriteOnce
+  - ReadWriteMany

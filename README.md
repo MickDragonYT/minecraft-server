@@ -22,6 +22,9 @@ Host your Minecraft server with plugins on Kubernetes! Using Kubernetes (k8s), y
 `FORCE_WORLD_COPY:` Decides if it should copy the game world again.
 * `WORLD:` Specifies which world to play in.
 
+if you wanna make further changes there's [Minecraft server dockor help](https://docker-minecraft-server.readthedocs.io/en/latest/) check it out and make sure you read everything before applying it.
+
+
 ##### Uploading world & mod/plugins pack using cloud zip file
 If you wanna upload the world you previously had or modpack/plugins pack you previous have. you can either use dropbox or other cloud based plattform. You need to create a zip file and upload it and copy the link and take the URL (link) and put it in the `value` in `WORLD`. It's important to turn the inside file to zip file and not the outside file to zip file.
 
@@ -82,7 +85,7 @@ Thanks to our amaizng image `itzg/mc-backup` the minecraft-server has it own res
           mountPath: /backups
         # Add other volume mounts as necessary
 ```
-
+There's risk with this backup script because it's storing it in the pod / cluster so if the pod goes down then you'll also lose your backup. That's why it's important to have either cloud backup or local backup. Please note that's important!
 
 ##### Copying the backup file manually
 If you wanna run backup manually using command, you can do that. First of you wanna run command `PWD` to know what file you're using. Then try to locate you backup file using same method.
@@ -110,6 +113,7 @@ After running the one line command you should see on your backup.file that it sh
 - `kubectl exec -it (pod name) bash`: Executes a command interactively inside a pod, usually used to access a shell.
 - `kubectl get pod (pod-name) -o yaml`: Retrieves detailed information about a specific pod in YAML format.
 - `kubectl logs (pod-name) -c minecraft-server -f`: Getting status and update in specfic file.
+`kubectl port-forward svc/minecraft-server 25575:25575`
 
 #### metal-lb.sh
 * important to run this script if you wanna host the local IP and test connection to the server.
@@ -154,11 +158,22 @@ if you wanna host your minecraft-server terminal use rcon. make sure you install
 Downloads/rcon-cli --host IP-ADDRESS --password
 ```
 
+##### Privacy
+In certain parts of the script, you'll notice references to `secretKeyRef` and `key`. These are utilized for concealing sensitive information within a `secret.yaml` file, allowing you to download assets onto your Minecraft server discreetly. To enhance security further, consider incorporating base code into your setup.
+```yaml
+- name: WORLD
+    valueFrom:
+       secretKeyRef:
+            name: minecraft-secret
+                key: WORLD
+```
+
 ##### Uploading stuff to github
-`git status`
-`git add .`
-`git commit`
-`git log`
+- `git status`
+- `git add .`
+- `git commit`
+- `git push`
+- `git log`
 
 #### Resources
 

@@ -6,10 +6,10 @@ metadata:
     app: minecraft
 spec:
   ports:
-    - port: 25565 # The port we
+    - port: 25565 
       targetPort: 25565
       name: minecraft
-    - port: 25575 # The port we
+    - port: 25575 
       targetPort: 25575
       name: rcon
   selector:

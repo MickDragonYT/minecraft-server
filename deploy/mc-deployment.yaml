@@ -80,28 +80,38 @@ spec:
           value: "true"
         - name: ENABLE_UPDATE
           value: "true"
-        - name: MODPACK
-          valueFrom:
-            secretKeyRef:
-              name: minecraft-secret
-              key: MODPACK
+      # - name: MODPACK
+      #  valueFrom:
+      #      secretKeyRef:
+      #        name: minecraft-secret
+      #        key: MODPACK
         - name: SPIGOT_DOWNLOAD_URL
           value: ""
         - name: BUILD_SPIGOT_FROM_SOURCE
           value: "true"
         - name: FORCE_WORLD_COPY
           value: "false"
-        - name: WORLD
-          valueFrom:
-            secretKeyRef:
-              name: minecraft-secret
-              key: WORLD
+       # - name: WORLD
+       #   valueFrom:
+       #     secretKeyRef:
+       #       name: minecraft-secret
+       #       key: WORLD
         - name: MAX_PLAYERS
           value: "50"
         - name: ICON
           value: "https://i.pinimg.com/564x/2f/de/33/2fde331891a8e8a4c97ca9ad79e583be.jpg"
         - name: MOTD
           value: "MICK'S MINECRAFT SMP [EU]"
+        - name: MEMORY
+          value: "12G"
+        - name: INIT_MEMORY
+          value: "2G"
+        - name: MAX_MEMORY
+          value: "14G"
+        - name: VIEW_DISTANCE
+          value: "10"
+        - name: SIMULATION_DISTANCE
+          value: "10"
         ports:
         - containerPort: 25565
           name: minecraft
