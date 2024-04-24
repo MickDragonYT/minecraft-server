@@ -83,11 +83,11 @@ spec:
           value: "true"
         - name: ENABLE_UPDATE
           value: "true"
-       # - name: MODPACK
-       #   valueFrom:
-       #     secretKeyRef:
-       #       name: minecraft-secret
-       #       key: FMODPACK
+        - name: MODPACK
+          valueFrom:
+            secretKeyRef:
+              name: minecraft-secret
+              key: FMODPACK
         - name: SPIGOT_DOWNLOAD_URL
           value: ""
         - name: BUILD_SPIGOT_FROM_SOURCE
