@@ -93,7 +93,7 @@ spec:
         - name: BUILD_SPIGOT_FROM_SOURCE
           value: "true"
         - name: FORCE_WORLD_COPY
-          value: "false"
+          value: "true"
         - name: WORLD
           valueFrom:
             secretKeyRef:
