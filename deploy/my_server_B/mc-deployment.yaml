@@ -40,6 +40,14 @@ spec:
       containers:
       - name: mc-backup
         image: itzg/mc-backup
+        resources:
+          requests:
+            memory: "12800Mi"
+            cpu: "6000m"
+          limits:
+            memory: "12800Mi"
+            cpu: "6000m"
+
         env:
         - name: BACKUP_INTERVAL
           value: "24h"  # Adjust backup interval as needed
