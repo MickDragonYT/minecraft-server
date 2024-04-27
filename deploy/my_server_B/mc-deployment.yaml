@@ -43,10 +43,10 @@ spec:
         resources:
           requests:
             memory: "12800Mi"
-            cpu: "6500m"
+            cpu: "6000m"
           limits:
             memory: "12800Mi"
-            cpu: "6500m"
+            cpu: "6000m"
 
         env:
         - name: BACKUP_INTERVAL
