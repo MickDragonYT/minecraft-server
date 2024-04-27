@@ -45,7 +45,7 @@ spec:
             memory: "12800Mi"
             cpu: "6000m"
           limits:
-            memory: "14000Mi"
+            memory: "13000Mi"
             cpu: "7000m"
 
         env:
