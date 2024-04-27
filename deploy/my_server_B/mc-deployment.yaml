@@ -43,9 +43,9 @@ spec:
         resources:
           requests:
             memory: "12800Mi"
-            cpu: "7000m"
+            cpu: "6000m"
           limits:
-            memory: "16000Mi"
+            memory: "14000Mi"
             cpu: "7000m"
 
         env:
