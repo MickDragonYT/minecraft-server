@@ -42,11 +42,11 @@ spec:
         image: itzg/mc-backup
         resources:
           requests:
-            memory: "12800Mi"
-            cpu: "6000m"
+            memory: "14800Mi"
+            cpu: "8000m"
           limits:
-            memory: "12800Mi"
-            cpu: "6000m"
+            memory: "14800Mi"
+            cpu: "8000m"
 
         env:
         - name: BACKUP_INTERVAL
