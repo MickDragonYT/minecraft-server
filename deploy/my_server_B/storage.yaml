@@ -32,6 +32,5 @@ spec:
   resources:
     requests:
       storage: 20Gi
-  volumeName: pvc-95b89f72-759e-4247-a567-8b1b32e7b332
   accessModes: 
   - ReadWriteMany
