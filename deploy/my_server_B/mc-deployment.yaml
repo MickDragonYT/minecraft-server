@@ -100,8 +100,8 @@ spec:
           value: ""
         - name: BUILD_SPIGOT_FROM_SOURCE
           value: "true"
-      #  - name: FORCE_WORLD_COPY
-      #    value: "false"
+        - name: FORCE_WORLD_COPY
+          value: "true"
       #  - name: WORLD
       #    valueFrom:
       #      secretKeyRef:
