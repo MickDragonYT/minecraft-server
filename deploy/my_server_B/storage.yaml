@@ -19,6 +19,7 @@ spec:
   resources:
     requests:
       storage: 2Gi
+  volumeName: pvc-44758e9b-08ce-458c-a224-bc04b9e58898
   accessModes:
   - ReadWriteOnce
 
